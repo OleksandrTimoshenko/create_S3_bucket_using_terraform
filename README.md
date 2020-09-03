@@ -1,1 +1,5 @@
-# create_S3_bucket_using_terraform
+# create S3 bucket using terraform
+
+terraform init
+terraform apply
+{cloud credentials}
