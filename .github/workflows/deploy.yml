@@ -1,12 +1,15 @@
 name: merge     # any push for  master
 on:
-  push:
+  pull_request:
     branches:
       - master
+    types: [closed]
 
 jobs:
   build:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true   # merdginh only
+    if: github.event.pull_request.merged == true
+    #if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true   # merdginh only
     runs-on: ubuntu-latest
   
     env:
