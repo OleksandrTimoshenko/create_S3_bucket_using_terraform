@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true   # merdginh only
+    #if: github.event.pull_request.merged == true   # merdginh only
     runs-on: ubuntu-latest
   
     env:
