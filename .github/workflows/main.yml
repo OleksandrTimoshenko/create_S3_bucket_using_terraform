@@ -44,9 +44,16 @@ jobs:
       - name: Show all file
         run: ls -la
       
-      - name: Terraform plan
-        env:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #  run: cd ./terraform && terraform init && terraform plan
-        run: echo $aws_secret_key
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        
+      - name: Terraform init
+        id: init
+        run: terraform init
+        
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
