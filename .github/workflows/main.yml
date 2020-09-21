@@ -45,4 +45,4 @@ jobs:
         run: ls -la
       
       - name: Terraform plan
-        run: pwd
+        run: cd ./terraform && terraform init && terraform plan
