@@ -42,14 +42,14 @@ jobs:
         
       - name: Terraform init
         id: init
-        run: cd ./terraform && terraform init
+        run: terraform init
       
       - name: Terraform validate
         id: validate
-        run: cd ./terraform && terraform validate
+        run: terraform validate
         
       - name: Terraform Plan
         id: plan
-        run: cd ./terraform && terraform plan
+        run: terraform plan
       
       
