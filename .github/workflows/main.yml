@@ -59,3 +59,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: cd ./terraform && terraform plan
+      
+      - name: Terraform Apply
+        id: apply
+        run: cd ./terraform && terraform apply -auto-approve
