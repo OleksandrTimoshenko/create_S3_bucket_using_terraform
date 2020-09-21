@@ -43,19 +43,13 @@ jobs:
       - name: Terraform init
         id: init
         run: cd ./terraform && terraform init
+      
+      - name: Terraform validate
+        id: validate
+        run: cd ./terraform && terraform validate
         
       - name: Terraform Plan
         id: plan
         run: cd ./terraform && terraform plan
-        
-      - name: Terraform Destroy
-        id: destroy-1
-        run: cd ./terraform && terraform destroy -auto-approve
       
-      - name: Terraform Apply
-        id: apply
-        run: cd ./terraform && terraform apply -auto-approve
-        
-      - name: Terraform Destroy
-        id: destroy-2
-        run: cd ./terraform && terraform destroy -auto-approve
+      
