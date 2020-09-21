@@ -41,15 +41,12 @@ jobs:
         run: ls -la
         
       - name: Terraform init
-        id: init
         run: terraform init
       
       - name: Terraform validate
-        id: validate
         run: terraform validate
         
       - name: Terraform Plan
-        id: plan
         run: terraform plan
       
       

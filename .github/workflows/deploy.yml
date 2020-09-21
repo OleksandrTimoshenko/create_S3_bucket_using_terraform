@@ -1,0 +1,22 @@
+name: terraform_for_push
+
+on:
+  pull_request:
+    types: [closed]
+
+
+jobs:
+  build:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    
+    env:
+      TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Terraform Apply
+        id: plan
+        run: terraform apply
