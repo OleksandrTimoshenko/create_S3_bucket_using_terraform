@@ -1,6 +1,6 @@
 
-#variable "aws_access_key" {}
-#variable "aws_secret_key" {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 variable "bucket_name" {
   default="test-busket-03-09-2020-terraform"
 }
