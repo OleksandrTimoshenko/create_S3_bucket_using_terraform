@@ -21,6 +21,8 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - name: Terraform init
         run: terraform init
 
