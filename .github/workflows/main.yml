@@ -52,8 +52,8 @@ jobs:
         
       - name: Terraform init
         id: init
-        run: terraform init
+        run: cd ./terraform && terraform init
         
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color
+        run: cd ./terraform && terraform plan
