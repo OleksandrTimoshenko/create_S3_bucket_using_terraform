@@ -1,23 +1,27 @@
-name: terraform_for_push
-
+name: automerge
 on:
   pull_request:
-    types: [closed]
-
-
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
 jobs:
-  build:
-    if: github.event.pull_request.merged == true
+  automerge:
     runs-on: ubuntu-latest
-    
-    env:
-      TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Terraform Init
+      - name: Terraform init
         run: terraform init
 
       - name: Terraform Apply
