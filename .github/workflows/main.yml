@@ -1,6 +1,18 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+# To use spesific terraform version !!!
+  
+#    - name: Install Terraform
+#      env:
+#            TERRAFORM_VERSION: "0.12.15"
+#      run: |
+#        tf_version=$TERRAFORM_VERSION
+#        wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+#        unzip terraform_"$tf_version"_linux_amd64.zip
+#        sudo mv terraform /usr/local/bin/
+
+  
+name: terraform_for_pull_reguests
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -22,10 +34,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
       - name: Terraform version
         run: terraform --version
@@ -35,3 +43,6 @@ jobs:
         
       - name: Show all file
         run: ls -la
+      
+      - name: Terraform plan
+        run: pwd
