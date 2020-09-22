@@ -7,11 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     
     env:
       TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
       TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      staging-working-directory: ./
 
     steps:
       - uses: actions/checkout@v2
@@ -26,12 +28,9 @@ jobs:
         
       - name: Terraform init
         run: terraform init
-        working-directory: ${{ staging-working-directory }}
       
       - name: Terraform validate
         run: terraform validate
-        working-directory: ${{ staging-working-directory }}
         
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ${{ staging-working-directory }}
