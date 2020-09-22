@@ -1,14 +1,11 @@
-name: merge     # any push for  master
+name: merge
+
 on:
   push:
     branches:
       - master
-
 jobs:
   build:
-    #if: github.event.pull_request.merged == true
-    #if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
-    #if: github.event.pull_request.merged == true   # merdginh only
     runs-on: ubuntu-latest
   
     env:
@@ -23,14 +20,8 @@ jobs:
         with:
           terraform_version: 0.12.24
 
-      - name: Terraform version
-        run: terraform --version
-
       - name: Terraform Init
         run: terraform init
       
       - name: Terraform Apply
         run: terraform apply -auto-approve
-
-
-
